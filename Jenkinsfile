@@ -1,10 +1,9 @@
 pipeline{
     agent { labels "jenkins-slave"}
     tools{
-        java "openjdk"
-        maven "maven"
+        jdk 'openjdk'
+        maven 'maven'
     }
-}
 stages{
     stage("cleanup workspace"){
         steps{
