@@ -10,7 +10,7 @@ stages{
             cleanWs()
         }
     }
-    stage("checkout from git"){
+    stage("checkout from SCM"){
         steps{
             git branch: 'main', credentialsId: 'github', url: 'https://github.com/Sarulatha59/register-app'
         }
