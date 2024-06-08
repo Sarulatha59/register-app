@@ -16,12 +16,12 @@ stages{
             git branch: 'main', credentialsId: 'github', url: 'https://github.com/Sarulatha59/register-app'
         }
     }
-    stage("Building application"{
+    stage("Building application"){
         steps{
             sh "mvn clean package"
         }
     }
-    stage("Testing application"{
+    stage("Testing application"){
         steps{
             sh "mvn test"
         }
