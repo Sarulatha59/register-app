@@ -1,30 +1,34 @@
-pipeline{
-    agent { label "jenkins-slave"}
-    tools{
+pipeline {
+    agent { label 'jenkins-slave' }
+    tools {
         jdk 'openjdk'
         maven 'maven'
     }
-stages{
-    stage("cleanup workspace"){
-        steps{
-            cleanWs()
+    stages{
+        stage("Cleanup Workspace"){
+                steps {
+                cleanWs()
+                }
         }
-    }
-    stage("checkout from SCM"){
-        steps{
-            git branch: 'main', credentialsId: 'github', url: 'https://github.com/Sarulatha59/register-app'
+
+        stage("Checkout from SCM"){
+                steps {
+                    git branch: 'main', credentialsId: 'github', url: 'https://github.com/Sarulatha59/register-app'
+                }
         }
-    }
-    stage("Building application"){
-        steps{
-            sh "mvn clean package"
-        }
-    }
-    stage("Testing application"){
-        steps{
-            sh "mvn test"
-        }
-    }
-}
-}
-          
+
+        stage("Build Application"){
+            steps {
+                sh "mvn clean package"
+            }
+
+       }
+
+       stage("Test Application"){
+           steps {
+                 sh "mvn test"
+           }
+       }
+
+      
+        
